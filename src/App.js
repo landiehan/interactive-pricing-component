@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import Theme from "./components/Theme";
+import TopBar from "./components/TopBar";
+import bgPattern from "./assets/bg-pattern.svg";
+import Card from "./components/Card";
 
-function App() {
+const Container = styled.div`
+  min-height: 100vh;
+  max-width: 375px;
+  margin: 0 auto;
+  @media only screen and (min-width: 568px) {
+    max-width: 1440px;
+  }
+
+  background-color: ${(props) => props.theme.mainBackground};
+  background-image: url(${bgPattern});
+  background-repeat: no-repeat;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Theme>
+      <Container>
+        <TopBar />
+        <Card />
+      </Container>
+    </Theme>
   );
-}
+};
 
 export default App;
